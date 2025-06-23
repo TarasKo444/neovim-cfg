@@ -1,5 +1,14 @@
 require("lazy_init")
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+require("lazy").setup({
+	{ import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
+	-- { import = "plugins_always",    cond = true },
+	-- { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
+})
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
