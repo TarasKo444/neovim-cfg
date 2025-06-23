@@ -1,10 +1,4 @@
 require("lazy_init")
-require("catppuccin").setup({
-  no_italic = true
-})
-require("autoclose").setup()
-
-vim.cmd.colorscheme("catppuccin")
 
 vim.o.number = true
 vim.o.relativenumber = true

@@ -20,8 +20,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  spec = {
-    -- This will import all plugin specifications from your lua/plugins directory
-    { import = "plugins" },
-  },
+	{ import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
+	-- { import = "plugins_always",    cond = true },
+	-- { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
