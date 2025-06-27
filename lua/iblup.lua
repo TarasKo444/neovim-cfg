@@ -5,8 +5,8 @@ vim.g.maplocalleader = " "
 
 require("lazy").setup({
 	{ import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
-	-- { import = "plugins_always",    cond = true },
-	-- { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
+	{ import = "plugins_always",    cond = true },
+	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
 vim.o.number = true
@@ -27,11 +27,6 @@ vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add new line below" })
 vim.keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add new line above" })
 vim.keymap.set('n', 'go', "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc = "Add empty line below (count aware, preserves cursor)" })
 vim.keymap.set('n', 'gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Add empty line above (count aware, preserves cursor)" })
-
-if vim.g.vscode then
-  -- VSCode Neovim
-  require "vscode_keymaps"
-end
 
 local opts = { noremap = true, silent = true }
 
@@ -57,3 +52,8 @@ vim.api.nvim_create_user_command(
     desc = 'Remove carriage return characters from the buffer',
   }
 )
+
+if vim.g.vscode then
+  -- VSCode Neovim
+  require("vscode_keymaps")
+end
