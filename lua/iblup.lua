@@ -43,6 +43,16 @@ vim.keymap.set("v", "K", ":m .-2<CR>==", opts)
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 
+-- no more comments on new lines
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions:remove("c")
+    vim.opt.formatoptions:remove("r")
+    vim.opt.formatoptions:remove("o")
+  end,
+})
+
 local function remove_carriage_returns()
     vim.cmd('silent! %s/\\r//g')
     print("Carriage returns removed.")
