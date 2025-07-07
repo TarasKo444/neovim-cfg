@@ -9,6 +9,15 @@ require("lazy").setup({
 	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
+if vim.g.neovide then
+  vim.g.neovide_refresh_rate = 144
+  vim.o.guifont="JetBrainsMono Nerd Font:h14:#e-subpixelantialias:#h-none"
+  vim.g.neovide_cursor_trail_size = 0.3
+  vim.g.neovide_cursor_short_animation_length = 0.01
+  vim.g.neovide_cursor_animation_length = 0.1
+  vim.g.neovide_scroll_animation_length = 0.1
+end
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
