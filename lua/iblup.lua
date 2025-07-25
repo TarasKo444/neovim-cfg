@@ -30,6 +30,7 @@ vim.o.autochdir = true
 vim.o.list = true
 vim.o.listchars = "tab:  "
 vim.o.signcolumn = 'yes'
+vim.opt.guicursor = "n-v-i-c:block-Cursor"
 -- vim.diagnostic.config({ virtual_text = true, update_in_insert = false, })
 
 vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add new line below" })
