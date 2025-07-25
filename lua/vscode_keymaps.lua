@@ -10,6 +10,3 @@ vim.g.maplocalleader = " "
 keymap("v", "p", '"_dP', opts)
 
 keymap({"i","n", "v"}, "<Esc>", "<cmd>lua require('vscode').action('hideSuggestWidget')<CR><Esc>", opts)
-
--- removes highlighting after escaping vim search
-keymap("n", "<Esc>", "<Esc>:noh<CR>", opts)

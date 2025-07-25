@@ -53,6 +53,8 @@ vim.keymap.set("v", "K", ":m .-2<CR>==", opts)
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 
+vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true })
+
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
