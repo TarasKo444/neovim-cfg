@@ -11,4 +11,4 @@ keymap("v", "p", '"_dP', opts)
 
 keymap({"i","n", "v"}, "<Esc>", "<cmd>lua require('vscode').action('hideSuggestWidget')<CR><Esc>", opts)
 
-keymap({"i", "n"}, "<Tab>", "<cmd>require('vscode').action('editor.action.inlineSuggest.commit')<CR>")
+keymap({"n", "i"}, "<Tab>", "<cmd>require('vscode').action('editor.action.inlineSuggest.commit')<CR>", opts)
