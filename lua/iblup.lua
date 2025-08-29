@@ -4,10 +4,20 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("lazy").setup({
+	-- { import = "plugins_always",    cond = true },
+  {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
 	{ import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
-	{ import = "plugins_always",    cond = true },
 	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
+
 
 if vim.g.neovide then
   vim.g.neovide_refresh_rate = 144
@@ -32,6 +42,12 @@ vim.o.listchars = "tab:  "
 vim.o.signcolumn = 'yes'
 vim.opt.guicursor = "n-v-i-c:block-Cursor"
 -- vim.diagnostic.config({ virtual_text = true, update_in_insert = false, })
+
+vim.o.scrolloff = 5
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.incsearch = true
+vim.o.hlsearch = true
 
 vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add new line below" })
 vim.keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add new line above" })
