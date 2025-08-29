@@ -18,7 +18,6 @@ require("lazy").setup({
 	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
-
 if vim.g.neovide then
   vim.g.neovide_refresh_rate = 144
   vim.o.guifont="JetBrainsMono Nerd Font:h14:#e-subpixelantialias:#h-none"
@@ -92,6 +91,17 @@ vim.api.nvim_create_user_command(
     desc = 'Remove carriage return characters from the buffer',
   }
 )
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({
+      timeout = 200, -- milliseconds
+      -- Optional: change the highlight group
+      -- higroup = "Visual",
+    })
+  end,
+})
 
 if vim.g.vscode then
   -- VSCode Neovim
