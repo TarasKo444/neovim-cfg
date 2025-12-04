@@ -6,10 +6,10 @@ return {
     "pyright"
   },
   config = function()
-    local lspconfig = require('lspconfig')
-    lspconfig.clangd.setup({})
-    lspconfig.pyright.setup({})
-    lspconfig.lua_ls.setup({
+    -- local lspconfig = require('lspconfig')
+    vim.lsp.config("clangd", {})
+    vim.lsp.config("pyright", {})
+    vim.lsp.config("lua_ls", {
       settings = {
         Lua = {
           diagnostics = {
