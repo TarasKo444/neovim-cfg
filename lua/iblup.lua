@@ -71,7 +71,7 @@ vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true })
 
 -- renames everything selected
-vim.keymap.set("v", "<leader>s", ":s/\\%V//g<Left><Left><Left>")
+vim.keymap.set("v", "<leader>r", ":s/\\%V//g<Left><Left><Left>")
 
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
