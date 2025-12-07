@@ -18,15 +18,6 @@ require("lazy").setup({
 	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
-if vim.g.neovide then
-  vim.g.neovide_refresh_rate = 144
-  vim.o.guifont="JetBrainsMono Nerd Font:h14:#e-subpixelantialias:#h-none"
-  vim.g.neovide_cursor_trail_size = 0.3
-  vim.g.neovide_cursor_short_animation_length = 0.01
-  vim.g.neovide_cursor_animation_length = 0.1
-  vim.g.neovide_scroll_animation_length = 0.1
-end
-
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
@@ -39,7 +30,11 @@ vim.o.autochdir = true
 vim.o.list = true
 vim.o.listchars = "tab:  "
 vim.o.signcolumn = 'yes'
-vim.opt.guicursor = "n-v-i-c:block-Cursor"
+vim.opt.guicursor = {
+  'n-v-c:block-Cursor',
+  'i-ci:block-Cursor/lCursor-blinkon400-blinkoff400',
+  'r:block-Cursor'
+}
 -- vim.diagnostic.config({ virtual_text = true, update_in_insert = false, })
 
 vim.o.scrolloff = 5
@@ -109,4 +104,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 if vim.g.vscode then
   -- VSCode Neovim
   require("vscode_keymaps")
+end
+
+if vim.g.neovide then
+  require("neovide")
 end
