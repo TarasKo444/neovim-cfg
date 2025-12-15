@@ -23,8 +23,9 @@ vim.cmd.colorscheme("gruber-darker")
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-vim.bo.softtabstop = 4
+vim.o.tabstop = 8
+vim.o.smarttab = true
+vim.bo.softtabstop = 0
 vim.bo.expandtab = true
 vim.o.swapfile = true
 vim.o.undofile = true
