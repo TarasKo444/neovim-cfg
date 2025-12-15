@@ -18,6 +18,8 @@ require("lazy").setup({
 	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
+vim.cmd.colorscheme("gruber-darker")
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
