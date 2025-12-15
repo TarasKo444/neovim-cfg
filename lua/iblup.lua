@@ -18,8 +18,6 @@ require("lazy").setup({
 	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
-vim.cmd.colorscheme("gruber-darker")
-
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
@@ -107,6 +105,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 if vim.g.vscode then
   -- VSCode Neovim
   require("vscode_keymaps")
+else
+  vim.cmd.colorscheme("gruber-darker")
 end
 
 if vim.g.neovide then
