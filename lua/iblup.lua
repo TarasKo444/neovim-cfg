@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("lazy").setup({
-	-- { import = "plugins_always",    cond = true },
+  -- { import = "plugins_always",    cond = true },
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
@@ -14,8 +14,8 @@ require("lazy").setup({
       })
     end
   },
-	{ import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
-	{ import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
+  { import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
+  { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
 vim.o.number = true
@@ -69,6 +69,9 @@ vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true })
 -- renames everything selected
 vim.keymap.set("v", "<leader>r", ":s/\\%V//g<Left><Left><Left>")
 
+-- leave terminal mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
@@ -80,8 +83,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 local function remove_carriage_returns()
-    vim.cmd('silent! %s/\\r//g')
-    print("Carriage returns removed.")
+  vim.cmd('silent! %s/\\r//g')
+  print("Carriage returns removed.")
 end
 
 vim.api.nvim_create_user_command(
@@ -107,6 +110,13 @@ if vim.g.vscode then
   require("vscode_keymaps")
 else
   vim.cmd.colorscheme("gruber-darker")
+
+  -- changes visual-whitespace fg color
+  local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
+  vim.api.nvim_set_hl(0, "VisualNonText", {
+    fg = "#707070",
+    bg = visual.bg,
+  })
 end
 
 if vim.g.neovide then
