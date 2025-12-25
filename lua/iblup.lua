@@ -18,7 +18,7 @@ require("lazy").setup({
   { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
-vim.o.number = true
+vim.o.number = false
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
 vim.o.tabstop = 8
@@ -115,7 +115,9 @@ if vim.g.vscode then
   require("vscode_keymaps")
 else
   vim.cmd.colorscheme("gruber-darker")
-
+  vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#404040', bold=false })
+  vim.api.nvim_set_hl(0, 'LineNr', { fg='#ffdd33', bold=false })
+  vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#404040', bold=false })
   -- changes visual-whitespace fg color
   local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
   vim.api.nvim_set_hl(0, "VisualNonText", {
