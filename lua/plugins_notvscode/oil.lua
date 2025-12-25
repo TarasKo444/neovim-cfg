@@ -6,20 +6,20 @@ return {
       columns = {
         -- "icon",
         -- "permissions",
-        -- "size",
-        -- "mtime",
+        {"size", highlight = "Special"},
+        "mtime",
       },
       delete_to_trash = false,
       skip_confirm_for_simple_edits = true,
       prompt_save_on_select_new_entry = false,
-      constrain_cursor = false,
+      constrain_cursor = 'name',
       lazy = false,
       view_options = {
         show_hidden = true,
       },
       confirmation = {
         border = 'single'
-      }
+      },
     })
   end
 }
