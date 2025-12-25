@@ -56,6 +56,9 @@ vim.keymap.set({"n", "v"}, "<leader>p", '"+p', opts)
 vim.keymap.set({"n", "v"}, "<leader>Y", '"+Y', opts)
 vim.keymap.set({"n", "v"}, "<leader>P", '"+P', opts)
 
+-- delete to clipboard
+vim.keymap.set({"n", "v"}, "<leader>d", '"+d', { noremap = true, silent = true })
+
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
