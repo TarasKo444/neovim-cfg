@@ -72,6 +72,8 @@ vim.keymap.set("v", "<leader>r", ":s/\\%V//g<Left><Left><Left>")
 -- leave terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
