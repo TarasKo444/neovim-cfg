@@ -18,8 +18,11 @@ require("lazy").setup({
   { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
-vim.o.number = false
+vim.opt.numberwidth = 2
+vim.opt.signcolumn = "number"
+vim.o.number = true
 vim.o.relativenumber = true
+
 vim.o.shiftwidth = 4
 vim.o.tabstop = 8
 vim.o.smarttab = true
@@ -30,7 +33,6 @@ vim.o.undofile = true
 vim.o.autochdir = true
 vim.o.list = true
 vim.o.listchars = "tab:  "
-vim.o.signcolumn = 'yes'
 vim.opt.guicursor = {
   'n-v-c:block-Cursor',
   'i-ci:block-Cursor/lCursor-blinkon400-blinkoff400',
