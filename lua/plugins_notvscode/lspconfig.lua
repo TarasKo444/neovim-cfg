@@ -11,6 +11,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    lazy = false,
     opts = {
       sources = {
         default = { "lazydev", "lsp", "path", "snippets", "buffer" },
@@ -27,6 +28,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = { 'saghen/blink.cmp' },
+    lazy = false,
     config = function()
       local servers = require('servers')
       for server_name, config in pairs(servers) do

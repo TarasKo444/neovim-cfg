@@ -8,17 +8,13 @@ require("lazy").setup({
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
+    config = function() require("nvim-surround").setup({ }) end
   },
   { import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
   { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
 
-vim.opt.numberwidth = 2
+vim.opt.numberwidth = 3
 vim.opt.signcolumn = "yes:1"
 vim.o.number = true
 vim.o.relativenumber = true
