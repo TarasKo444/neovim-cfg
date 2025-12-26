@@ -19,14 +19,18 @@ vim.opt.signcolumn = "yes:1"
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undofile = true
+
+vim.o.termguicolors = true
+vim.o.updatetime = 750
+
 vim.o.shiftwidth = 4
 vim.o.tabstop = 8
 vim.o.smarttab = true
 vim.bo.softtabstop = 0
 vim.bo.expandtab = true
-vim.o.swapfile = true
-vim.o.undofile = true
-vim.o.autochdir = true
 vim.o.list = true
 vim.o.listchars = "tab:  "
 vim.opt.guicursor = {
@@ -60,10 +64,18 @@ vim.keymap.set({"n", "v"}, "<leader>d", '"+d', { noremap = true, silent = true }
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
-vim.keymap.set("v", "J", ":m .+1<CR>==", opts)
-vim.keymap.set("v", "K", ":m .-2<CR>==", opts)
-vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
-vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv-gv", opts)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv-gv", opts)
+-- vim.keymap.set("v", "J", ":m .+1<CR>==", opts)
+-- vim.keymap.set("v", "K", ":m .-2<CR>==", opts)
+-- vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts)
+-- vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts)
+
+vim.keymap.set('n', 'J', "mzJ`z")
+
+-- make search in the middle
+vim.keymap.set('n', 'n', "nzzzv")
+vim.keymap.set('n', 'N', "Nzzzv")
 
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true })
 
@@ -75,6 +87,10 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
+vim.keymap.set('n', '<leader>u', function ()
+  vim.cmd.UndotreeToggle()
+  vim.cmd.UndotreeFocus()
+end)
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
@@ -86,10 +102,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_user_command(
-  'RemoveCarriageReturns', function() 
+  'RemoveCarriageReturns', function()
     vim.cmd('silent! %s/\\r//g')
     print("Carriage returns removed.")
-  end,  
+  end,
   { desc = 'Remove carriage return characters from the buffer', }
 )
 
@@ -112,6 +128,7 @@ else
   vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#404040', bold=false })
   vim.api.nvim_set_hl(0, 'LineNr', { fg='#ffdd33', bold=false })
   vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#404040', bold=false })
+  vim.api.nvim_set_hl(0, "@punctuation.bracket", { fg = "#ffffff", force = true })
   -- changes visual-whitespace fg color
   local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
   vim.api.nvim_set_hl(0, "VisualNonText", {
