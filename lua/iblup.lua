@@ -19,7 +19,7 @@ require("lazy").setup({
 })
 
 vim.opt.numberwidth = 2
-vim.opt.signcolumn = "number"
+vim.opt.signcolumn = "yes:1"
 vim.o.number = true
 vim.o.relativenumber = true
 
@@ -89,16 +89,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-local function remove_carriage_returns()
-  vim.cmd('silent! %s/\\r//g')
-  print("Carriage returns removed.")
-end
-
 vim.api.nvim_create_user_command(
-  'RemoveCarriageReturns',
-  remove_carriage_returns,  {
-    desc = 'Remove carriage return characters from the buffer',
-  }
+  'RemoveCarriageReturns', function() 
+    vim.cmd('silent! %s/\\r//g')
+    print("Carriage returns removed.")
+  end,  
+  { desc = 'Remove carriage return characters from the buffer', }
 )
 
 vim.api.nvim_create_autocmd("TextYankPost", {
