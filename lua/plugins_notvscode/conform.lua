@@ -33,10 +33,7 @@ return {
       require("conform").format({ async = true, lsp_format = "fallback", range = range })
     end, { range = true })
 
-    vim.keymap.set("v", "<leader>=", function()
-      conform.format({ async = true, lsp_format = "fallback", timeout_ms = 500 })
-    end, { desc = "Format selection" })
-
+    vim.keymap.set("v", "<leader>=", vim.cmd.Format)
     vim.keymap.set("n", "<leader>f=", vim.cmd.Format)
   end,
 }

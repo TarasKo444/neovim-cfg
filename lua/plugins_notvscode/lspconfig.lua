@@ -32,7 +32,7 @@ return {
       signature = {
         enabled = true,
         trigger = {
-          enabled =  false,
+          enabled =  true,
         }
       },
       completion = {
