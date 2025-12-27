@@ -1,8 +1,8 @@
-return { 
-  "catppuccin/nvim", 
+return {
+  "catppuccin/nvim",
   enabled = false,
-  name = "catppuccin", 
-  priority = 1000, 
+  name = "catppuccin",
+  priority = 1000,
   integrations = {
     treesitter = true,
   },
