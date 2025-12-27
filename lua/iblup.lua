@@ -80,10 +80,12 @@ vim.keymap.set('n', 'N', "Nzzzv")
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true })
 
 -- renames everything selected
-vim.keymap.set("v", "<leader>r", ":s/\\%V//g<Left><Left><Left>")
+vim.keymap.set("v", "<leader>r", ":s/\\%V/g<Left><Left>")
 
 -- leave terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+
+vim.keymap.set('n', '<leader>q', vim.cmd.quit, { desc = "Quit" })
 
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {

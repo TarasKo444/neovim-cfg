@@ -15,6 +15,7 @@ return {
   clangd = {
     cmd = {
       "clangd",
+      "--function-arg-placeholders=0",
     },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
     root_markers = {

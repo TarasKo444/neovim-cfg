@@ -3,11 +3,20 @@ return {
     "saghen/blink.cmp",
     lazy = false,
     opts = {
+      keymap = {
+        ['<C-j>'] = { 'select_next' },
+        ['<C-k>'] = { 'select_prev' },
+        ['<Tab>'] = { 'accept', 'fallback' },
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-y>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-e>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+      },
       fuzzy = {
         implementation = "prefer_rust_with_warning",
         use_proximity = true,
         prebuilt_binaries = {
-          download = true,
+         download = true,
         }
       },
       sources = {
@@ -20,7 +29,12 @@ return {
           },
         },
       },
-      signature = { enabled = true },
+      signature = {
+        enabled = true,
+        trigger = {
+          enabled =  false,
+        }
+      },
       completion = {
         ghost_text = { enabled = false, show_with_menu = true },
         keyword = {
@@ -75,6 +89,12 @@ return {
       for server_name, config in pairs(servers) do
         vim.lsp.config(server_name, config)
         vim.lsp.enable(server_name)
+
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to Definition" })
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+        vim.keymap.set('n', 'K',  vim.lsp.buf.hover, { desc = "Hover Documentation" })
+        vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+        vim.keymap.set('n', '<leader>SD', vim.diagnostic.setqflist, { desc = "Project Diagnostics (Quickfix)" })
       end
     end,
   },
