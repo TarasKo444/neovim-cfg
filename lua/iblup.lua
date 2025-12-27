@@ -95,6 +95,19 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufEnter", {
+    desc = "Set CWD to current file or Oil directory",
+    callback = function()
+        local path = vim.api.nvim_buf_get_name(0)
+        if path:sub(1, 6) == "oil://" then
+            local real_path = path:sub(7)
+            vim.api.nvim_set_current_dir(real_path)
+        elseif path ~= "" and vim.bo.buftype == "" then
+            vim.api.nvim_set_current_dir(vim.fs.dirname(path))
+        end
+    end,
+})
+
 vim.api.nvim_create_user_command(
   'RemoveCarriageReturns', function()
     vim.cmd('silent! %s/\\r//g')
