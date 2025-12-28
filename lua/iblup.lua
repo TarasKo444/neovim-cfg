@@ -16,23 +16,23 @@ require("lazy").setup({
 
 vim.opt.numberwidth = 3
 vim.opt.signcolumn = "yes:1"
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-vim.o.swapfile = false
-vim.o.backup = false
-vim.o.undofile = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
 
-vim.o.termguicolors = true
-vim.o.updatetime = 750
+vim.opt.termguicolors = true
+vim.opt.updatetime = 750
 
-vim.o.shiftwidth = 4
-vim.o.tabstop = 8
-vim.o.smarttab = true
-vim.bo.softtabstop = 0
-vim.bo.expandtab = true
-vim.o.list = true
-vim.o.listchars = "tab:  "
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 8
+vim.opt.smarttab = true
+vim.opt.softtabstop = 0
+vim.opt.expandtab = true
+vim.opt.list = true
+vim.opt.listchars = "tab:  "
 vim.opt.guicursor = {
   'n-v-c:block-Cursor',
   'i-ci:block-Cursor/lCursor-blinkon400-blinkoff400',
@@ -40,11 +40,11 @@ vim.opt.guicursor = {
 }
 -- vim.diagnostic.config({ virtual_text = true, update_in_insert = false, })
 
-vim.o.scrolloff = 5
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.incsearch = true
-vim.o.hlsearch = true
+vim.opt.scrolloff = 5
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
 
 vim.keymap.set("n", "<leader>o", "o<Esc>", { desc = "Add new line below" })
 vim.keymap.set("n", "<leader>O", "O<Esc>", { desc = "Add new line above" })
