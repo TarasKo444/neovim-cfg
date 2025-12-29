@@ -45,6 +45,18 @@ return {
         vim.api.nvim_set_hl(0, "@punctuation.bracket", { fg = "#ffffff", force = true })
         vim.api.nvim_set_hl(0, "@type.definition.c", {})
         vim.api.nvim_set_hl(0, "@number.c", { fg = "#ff6200" })
+
+        local highlights = {
+          FlashBackdrop = { fg = "#52494e" },
+          FlashLabel    = { fg = "#73c936", bold = true },
+          FlashMatch    = { fg = "#9e95c7" },
+          FlashCurrent  = { fg = "#ffdd33" },
+          FlashPrompt   = { link = "NormalFloat" },
+        }
+
+        for group, opts in pairs(highlights) do
+          vim.api.nvim_set_hl(0, group, opts)
+        end
       end
 
       local gruber_group = vim.api.nvim_create_augroup("GruberOverrides", { clear = true })
