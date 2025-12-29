@@ -148,13 +148,20 @@ if vim.g.vscode then
   -- VSCode Neovim
   require("vscode_keymaps")
 else
-  vim.cmd.colorscheme("gruber-darker")
-
-  local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
-  vim.api.nvim_set_hl(0, "VisualNonText", {
-    fg = "#707070",
-    bg = visual.bg,
+  local group = vim.api.nvim_create_augroup("ThemeCustomization", { clear = true })
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    group = group,
+    pattern = "*",
+    callback = function()
+      local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
+      vim.api.nvim_set_hl(0, "VisualNonText", {
+        fg = "#707070",
+        bg = visual.bg,
+      })
+    end,
   })
+
+  vim.cmd.colorscheme("gruber-darker")
 end
 
 if vim.g.neovide then
