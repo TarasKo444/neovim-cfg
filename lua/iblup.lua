@@ -149,11 +149,7 @@ if vim.g.vscode then
   require("vscode_keymaps")
 else
   vim.cmd.colorscheme("gruber-darker")
-  vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#404040', bold=false })
-  vim.api.nvim_set_hl(0, 'LineNr', { fg='#ffdd33', bold=false })
-  vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#404040', bold=false })
-  vim.api.nvim_set_hl(0, "@punctuation.bracket", { fg = "#ffffff", force = true })
-  -- changes visual-whitespace fg color
+
   local visual = vim.api.nvim_get_hl(0, { name = "Visual" })
   vim.api.nvim_set_hl(0, "VisualNonText", {
     fg = "#707070",

@@ -9,5 +9,6 @@ return {
     vim.keymap.set("n", "<leader>fb", function () FzfLua.buffers() end, { silent = true })
     vim.keymap.set("n", "<leader>fh", function () FzfLua.help_tags() end, { silent = true })
     vim.keymap.set("n", "<leader>fa", function () FzfLua.builtin() end, { silent = true })
+    vim.keymap.set("n", "<leader>ft", function () FzfLua.colorschemes() end, { silent = true })
   end
 }
