@@ -11,4 +11,8 @@ return {
       folds = false,
     },
   },
+  config = function ()
+    vim.api.nvim_set_hl(0, "@type.definition.c", {})
+    vim.api.nvim_set_hl(0, "@number.c", { fg = "#ff6200" })
+  end
 }
