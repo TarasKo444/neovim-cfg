@@ -88,7 +88,7 @@ vim.keymap.set("v", "<leader>r", ":s/\\%V/g<Left><Left>")
 -- leave terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 
-vim.keymap.set('n', '<leader>q', vim.cmd.quit, { desc = "Quit" })
+vim.keymap.set('n', '<leader>q', vim.cmd.close, { desc = "Close" })
 
 -- Navigate windows
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window' })
@@ -97,10 +97,10 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window' })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window' })
 
 -- Resize windows
-vim.keymap.set('n', '<C-S-k>', ':resize -2<CR>')
-vim.keymap.set('n', '<C-S-j>', ':resize +2<CR>')
-vim.keymap.set('n', '<C-S-h>', ':vertical resize +2<CR>')
-vim.keymap.set('n', '<C-S-l>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-S-k>', ':resize +2<CR>')
+vim.keymap.set('n', '<C-S-j>', ':resize -2<CR>')
+vim.keymap.set('n', '<C-S-h>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>')
 
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
