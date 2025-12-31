@@ -11,6 +11,8 @@ return {
         ['<C-y>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-e>'] = { 'scroll_documentation_down', 'fallback' },
         ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+        ['<C-n>'] = { 'snippet_forward' },
+        ['<C-N>'] = { 'snippet_backward' }
       },
       fuzzy = {
         implementation = "prefer_rust_with_warning",

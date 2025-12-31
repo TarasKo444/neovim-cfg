@@ -52,6 +52,7 @@ return {
           FlashMatch    = { fg = "#9e95c7" },
           FlashCurrent  = { fg = "#ffdd33" },
           FlashPrompt   = { link = "NormalFloat" },
+          FlashCursor   = { fg = "#ff8da1" }
         }
 
         for group, opts in pairs(highlights) do
