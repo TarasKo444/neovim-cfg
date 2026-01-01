@@ -2,17 +2,19 @@ return {
   {
     "saghen/blink.cmp",
     lazy = false,
+    build = 'cargo +nightly build --release',
     opts = {
       keymap = {
-        ['<C-j>'] = { 'select_next' },
-        ['<C-k>'] = { 'select_prev' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<Tab>'] = { 'accept', 'fallback' },
-        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation', "fallback" },
         ['<C-y>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-e>'] = { 'scroll_documentation_down', 'fallback' },
-        ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
-        ['<C-n>'] = { 'snippet_forward' },
-        ['<C-N>'] = { 'snippet_backward' }
+        ['<C-s>'] = { 'show_signature', 'fallback', 'hide_signature' },
+        ['<C-n>'] = { 'snippet_forward', 'fallback' },
+        ['<C-s-n>'] = { 'snippet_backward', 'fallback' }
       },
       fuzzy = {
         implementation = "prefer_rust_with_warning",
@@ -79,6 +81,7 @@ return {
     opts = {
       library = {
         -- Load luvit types when the `vim.uv` word is found
+        "nvim-dap-ui",
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },

@@ -88,7 +88,7 @@ vim.keymap.set("v", "<leader>r", ":s/\\%V/g<Left><Left>")
 -- leave terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 
-vim.keymap.set('n', '<leader>q', vim.cmd.close, { desc = "Close" })
+vim.keymap.set('n', '<leader>q', '<cmd>close!<CR>', { desc = "Close (force)" })
 
 -- Navigate windows
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window' })
