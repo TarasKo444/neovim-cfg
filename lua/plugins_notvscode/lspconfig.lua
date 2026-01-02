@@ -44,7 +44,7 @@ return {
         keyword = {
           range = 'prefix',
         },
-        accept = { auto_brackets = { enabled = true } },
+        accept = { auto_brackets = { enabled = false } },
         menu = {
           draw = {
             columns = { { "kind_icon" }, { "label", gap = 1 } },

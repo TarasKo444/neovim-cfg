@@ -11,7 +11,7 @@ return {
     config = function()
       local ts = require("nvim-treesitter")
 
-      local ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "javascript", "html", "python", "rust" }
+      local ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "javascript", "html", "python", "rust", "c_sharp" }
 
       local already_installed = ts.get_installed()
 
