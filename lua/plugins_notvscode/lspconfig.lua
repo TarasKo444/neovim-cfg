@@ -1,10 +1,14 @@
 return {
   {
     "saghen/blink.cmp",
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+    },
     lazy = false,
     build = 'cargo +nightly build --release',
     opts = {
       keymap = {
+        ['<C-i>'] = {},
         ['<C-j>'] = { 'select_next', 'fallback' },
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<Tab>'] = { 'accept', 'fallback' },

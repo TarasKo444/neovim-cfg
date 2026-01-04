@@ -102,6 +102,8 @@ vim.keymap.set('n', '<C-S-j>', ':resize -2<CR>')
 vim.keymap.set('n', '<C-S-h>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>')
 
+vim.api.nvim_create_user_command('W', 'write', {})
+
 -- no more comments on new lines
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",

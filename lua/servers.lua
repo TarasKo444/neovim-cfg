@@ -17,7 +17,7 @@ return {
       "clangd",
       "--function-arg-placeholders=0",
     },
-    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+    filetypes = { 'c', 'cpp', 'h', 'hpp', 'objc', 'objcpp', 'cuda' },
     root_markers = {
       '.clangd',
       '.clang-tidy',
@@ -30,10 +30,25 @@ return {
     capabilities = {
       textDocument = {
         completion = {
+          completionItem = {
+            snippetSupport = false,
+          },
           editsNearCursor = true,
         },
       },
-      offsetEncoding = { 'utf-8', 'utf-16' },
+      offsetEncoding = { 'utf-16' },
     },
-  }
+  },
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        analysis = {
+          diagnosticMode = "workspace",
+          indexingDefaultSeverity = "info",
+          autoImportCompletions = true,
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+  },
 }
