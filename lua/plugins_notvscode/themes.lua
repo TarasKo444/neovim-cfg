@@ -1,9 +1,41 @@
+function ApplyDefaultFlash()
+  local highlights = {
+    FlashBackdrop = { fg = "#52494e" },
+    FlashLabel    = { fg = "#73c936", bold = true },
+    FlashMatch    = { fg = "#9e95c7" },
+    FlashCurrent  = { fg = "#ffdd33" },
+    FlashPrompt   = { link = "NormalFloat" },
+    FlashCursor   = { fg = "#ff8da1" }
+  }
+
+  for group, opts in pairs(highlights) do
+    vim.api.nvim_set_hl(0, group, opts)
+  end
+end
+
 return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
       require("rose-pine").setup({ })
+
+      local function apply_overrides()
+        vim.api.nvim_set_hl(0, "Cursor", {
+          fg = "#000000",
+          bg = "#ffffff",
+        })
+
+        ApplyDefaultFlash()
+      end
+
+      local rose_group = vim.api.nvim_create_augroup("RoseOverrides", { clear = true })
+
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        group = rose_group,
+        pattern = "*",
+        callback = apply_overrides,
+      })
     end,
   },
   {
@@ -39,7 +71,7 @@ return {
       },
     },
     config = function()
-      local function apply_gruber_overrides()
+      local function apply_overrides()
         if vim.g.colors_name ~= "gruber-darker" then
           return
         end
@@ -52,18 +84,7 @@ return {
         vim.api.nvim_set_hl(0, "@type.definition.c", {})
         vim.api.nvim_set_hl(0, "@number.c", { fg = "#ff6200" })
 
-        local highlights = {
-          FlashBackdrop = { fg = "#52494e" },
-          FlashLabel    = { fg = "#73c936", bold = true },
-          FlashMatch    = { fg = "#9e95c7" },
-          FlashCurrent  = { fg = "#ffdd33" },
-          FlashPrompt   = { link = "NormalFloat" },
-          FlashCursor   = { fg = "#ff8da1" }
-        }
-
-        for group, opts in pairs(highlights) do
-          vim.api.nvim_set_hl(0, group, opts)
-        end
+        ApplyDefaultFlash()
       end
 
       local gruber_group = vim.api.nvim_create_augroup("GruberOverrides", { clear = true })
@@ -71,7 +92,7 @@ return {
       vim.api.nvim_create_autocmd("ColorScheme", {
         group = gruber_group,
         pattern = "*",
-        callback = apply_gruber_overrides,
+        callback = apply_overrides,
       })
     end,
   },

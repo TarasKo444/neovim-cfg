@@ -77,7 +77,7 @@ vim.keymap.set('n', 'J', "mzJ`z")
 vim.keymap.set('n', 'n', "nzzzv")
 vim.keymap.set('n', 'N', "Nzzzv")
 
-vim.keymap.set('n', '<Esc><Esc>', function ()
+vim.keymap.set('n', '<Esc>', function ()
   vim.snippet.stop()
   vim.cmd('noh')
 end, { silent = true })
@@ -163,7 +163,8 @@ else
     end,
   })
 
-  vim.cmd.colorscheme("gruber-darker")
+  -- vim.cmd.colorscheme("gruber-darker")
+  vim.cmd.colorscheme("rose-pine")
 end
 
 if vim.g.neovide then

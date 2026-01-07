@@ -8,10 +8,12 @@ return {
     build = 'cargo +nightly build --release',
     opts = {
       keymap = {
+        preset = 'none',
         ['<C-i>'] = {},
         ['<C-j>'] = { 'select_next', 'fallback' },
         ['<C-k>'] = { 'select_prev', 'fallback' },
-        ['<Tab>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'accept', 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
         ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation', "fallback" },
         ['<C-y>'] = { 'scroll_documentation_up', 'fallback' },
@@ -24,7 +26,7 @@ return {
         implementation = "prefer_rust_with_warning",
         use_proximity = true,
         prebuilt_binaries = {
-         download = true,
+          download = true,
         }
       },
       sources = {
