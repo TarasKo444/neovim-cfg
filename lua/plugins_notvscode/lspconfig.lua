@@ -14,11 +14,11 @@ return {
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<Tab>'] = { 'accept', 'snippet_forward', 'fallback' },
         ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
-        ['<CR>'] = { 'accept', 'fallback' },
-        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation', "fallback" },
+        -- ['<CR>'] = { 'accept', 'fallback' },
+        -- ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation', "fallback" },
         ['<C-y>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-e>'] = { 'scroll_documentation_down', 'fallback' },
-        ['<C-s>'] = { 'show_signature', 'fallback', 'hide_signature' },
+        -- ['<C-s>'] = { 'show_signature', 'fallback', 'hide_signature' },
         ['<C-n>'] = { 'snippet_forward', 'fallback' },
         ['<C-s-n>'] = { 'snippet_backward', 'fallback' }
       },
@@ -107,6 +107,9 @@ return {
         vim.keymap.set('n', 'K',  vim.lsp.buf.hover, { desc = "Hover Documentation" })
         vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, { desc = "Line Diagnostics" })
         vim.keymap.set('n', '<leader>SD', vim.diagnostic.setqflist, { desc = "Project Diagnostics (Quickfix)" })
+
+        vim.keymap.set({ 'n', 'i' }, '<C-Space>', vim.lsp.buf.hover)
+        vim.keymap.set({ 'n', 'i' }, '<C-s>', vim.lsp.buf.signature_help)
       end
     end,
   },

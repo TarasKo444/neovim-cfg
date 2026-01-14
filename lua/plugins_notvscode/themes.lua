@@ -1,4 +1,4 @@
-function ApplyDefaultFlash()
+function ApplyDefault()
   local highlights = {
     FlashBackdrop = { fg = "#52494e" },
     FlashLabel    = { fg = "#73c936", bold = true },
@@ -11,6 +11,8 @@ function ApplyDefaultFlash()
   for group, opts in pairs(highlights) do
     vim.api.nvim_set_hl(0, group, opts)
   end
+
+  vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#616161" })
 end
 
 return {
@@ -26,7 +28,7 @@ return {
           bg = "#ffffff",
         })
 
-        ApplyDefaultFlash()
+        ApplyDefault()
       end
 
       local rose_group = vim.api.nvim_create_augroup("RoseOverrides", { clear = true })
@@ -55,6 +57,8 @@ return {
       require("catppuccin").setup({
         no_italic = true,
       })
+
+      ApplyDefault()
     end,
   },
   {
@@ -84,7 +88,7 @@ return {
         vim.api.nvim_set_hl(0, "@type.definition.c", {})
         vim.api.nvim_set_hl(0, "@number.c", { fg = "#ff6200" })
 
-        ApplyDefaultFlash()
+        ApplyDefault()
       end
 
       local gruber_group = vim.api.nvim_create_augroup("GruberOverrides", { clear = true })

@@ -51,4 +51,25 @@ return {
       },
     },
   },
+  jdtls = {
+    cmd = { "jdtls" },
+    filetypes = { "java" },
+    root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" },
+    capabilities = require('blink.cmp').get_lsp_capabilities({
+      textDocument = {
+        completion = {
+          completionItem = {
+            snippetSupport = false
+          }
+        }
+      }
+    }),
+    settings = {
+      java = {
+        completion = {
+          guessMethodArguments = false,
+        },
+      },
+    },
+  },
 }

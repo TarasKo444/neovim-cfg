@@ -10,6 +10,19 @@ require("lazy").setup({
     event = "VeryLazy",
     config = function() require("nvim-surround").setup({ }) end
   },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      -- disabled for surrond.nvim to work
+      -- { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
   { import = "plugins_notvscode", cond = (function() return not vim.g.vscode end) },
   { import = "plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
@@ -33,11 +46,15 @@ vim.opt.softtabstop = 0
 vim.opt.expandtab = true
 vim.opt.list = true
 vim.opt.listchars = "tab:  "
-vim.opt.guicursor = {
-  'n-v-c:block-Cursor',
-  'i-ci:block-Cursor/lCursor-blinkon400-blinkoff400',
-  'r:block-Cursor'
-}
+
+vim.opt.guicursor = "a:block-Cursor"
+vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
+-- vim.opt.guicursor = {
+--   'n-v-c:block-Cursor',
+--   'i-ci:block-Cursor/lCursor-blinkon400-blinkoff400',
+--   'r:block-Cursor'
+-- }
+
 -- vim.diagnostic.config({ virtual_text = true, update_in_insert = false, })
 
 vim.opt.scrolloff = 5
@@ -101,6 +118,8 @@ vim.keymap.set('n', '<C-S-k>', ':resize +2<CR>')
 vim.keymap.set('n', '<C-S-j>', ':resize -2<CR>')
 vim.keymap.set('n', '<C-S-h>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<C-S-l>', ':vertical resize +2<CR>')
+
+vim.keymap.set("i", "<S-Tab>", "<C-d>", opts)
 
 vim.api.nvim_create_user_command('W', 'write', {})
 
