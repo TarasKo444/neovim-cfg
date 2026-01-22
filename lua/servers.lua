@@ -57,6 +57,11 @@ return {
     root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" },
     capabilities = require('blink.cmp').get_lsp_capabilities({
       textDocument = {
+        synchronization = {
+          didSave = true,
+          willSave = false,
+          willSaveWaitUntil = false,
+        },
         completion = {
           completionItem = {
             snippetSupport = false
@@ -68,6 +73,12 @@ return {
       java = {
         completion = {
           guessMethodArguments = false,
+        },
+        signatureHelp = {
+          enabled = true,
+        },
+        autobuild = {
+          enabled = false,
         },
       },
     },

@@ -7,5 +7,6 @@ return {
       direction = 'float',
       persist_mode = false,
     }
+    vim.keymap.set({ "n", "t" }, "<M-\\>", "<cmd>ToggleTerm<CR>")
   end
 }
