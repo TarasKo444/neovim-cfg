@@ -1,7 +1,9 @@
 return {
   "zbirenbaum/copilot.lua",
+  priority = 998,
   dependencies = {
     "copilotlsp-nvim/copilot-lsp",
+    "saghen/blink.cmp",
   },
   cmd = "Copilot",
   event = "InsertEnter",
@@ -14,7 +16,8 @@ return {
         debounce = 40,
         trigger_on_accept = true,
         keymap = {
-          accept = "<C-i>",
+          accept = "<C-p>",
+          -- accept = false,
           accept_word = false,
           accept_line = false,
         },
@@ -28,17 +31,14 @@ return {
       -- },
     })
 
-    -- vim.keymap.set({ "n", "i", "v" }, "<M-i>", function()
-    --   local bufnr = vim.api.nvim_get_current_buf()
-    --   local state = vim.b[bufnr].nes_state
-    --   if state then
-    --     require("copilot-lsp.nes").walk_cursor_start_edit()
-    --     require("copilot-lsp.nes").apply_pending_nes()
-    --     require("copilot-lsp.nes").walk_cursor_end_edit()
-    --     return nil
+    -- vim.keymap.set("i", "<C-i>", function()
+    --   local copilot = require("copilot.suggestion")
+    --   if copilot.is_visible() then
+    --     copilot.accept()
+    --     return ""
     --   else
-    --     return "<M-i>"
+    --     return "\t"
     --   end
-    -- end, { desc = "Accept Copilot NES suggestion", expr = true })
+    -- end, { expr = true, silent = true })
   end,
 }
